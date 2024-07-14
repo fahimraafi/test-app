@@ -2,17 +2,25 @@
 
 namespace App\Livewire;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Clicker extends Component
 {
+    public $users;
+
+    public $name;
+    public $email;
+    public $password;  
+
+    
 
     public function createUser(){
         User::create([
-            'name' => 'Raafi',
-            'email' => 'a@b.com',
-            'password' => '122333',
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
         ]);
     }
 
@@ -22,11 +30,8 @@ class Clicker extends Component
 
     public function render()
     {
-        $title = 'Raafi';
-        $users = User::all();
-
-        return view('livewire.clicker',[
-            'title' => $title,
+        $users = Auth::user();   
+        return view('livewire.clicker', [
             'users' => $users,
         ]);
     }
