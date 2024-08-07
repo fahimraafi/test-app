@@ -117,6 +117,6 @@
                 </div>
             </div>
         </div> --}}
-        @livewire('create-post')
+        @livewire('add-staff')
     </body>
 </html>
