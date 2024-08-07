@@ -23,4 +23,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+// Route::view('livewire.create-post', 'create-post')
+//     ->middleware(['auth', 'verified'])
+//     ->name('create-post');
+
 require __DIR__.'/auth.php';

@@ -12,6 +12,12 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+
+            <div class="bg-dark dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
+                <div class="p-6 text-black">
+                    {{-- @livewire('create-post') --}}
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
