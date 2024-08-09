@@ -4,10 +4,13 @@ namespace App\Livewire;
 
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use App\Models\Staff;
+use App\Models\Staffs;
+use Livewire\WithFileUploads;
 
 class AddStaff extends Component
 {
+    use WithFileUploads;
+
     #[Validate('required')]
     public $name;
 
@@ -22,13 +25,15 @@ class AddStaff extends Component
 
     public function save()
     {
-        $this->validate();
+        $validated = $this->validate();
 
-        Staff::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => $this->password,
-        ]);
+        if($this->image){
+            $validated['image'] = $this->image->store('uploads', 'public');
+        }
+
+        Staffs::create($validated);
+
+        $this->reset(['name', 'email', 'password']);
 
 
     }
